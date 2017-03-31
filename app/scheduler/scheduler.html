@@ -25,7 +25,7 @@
 								<option value="every_ten_minutes">Every Ten Minutes</option>
 							</select>
 						</td>
-						<td>{{job.last_run | formatDate | date:"MM/dd/yy h:mm:ss a"}}</td>
+						<td>{{job.last_run | formatDate | date:"MM/dd/yy h:mm a"}}</td>
 						<td ng-if="!editing[$index]">{{job.next_due | formatDate | date:"MM/dd/yy h:mm a"}}</td>
 						<td ng-if="editing[$index]">
 							<input datetime-picker ng-model="job.next_due" date-format="MM/dd/yy h:mm a" />
@@ -39,6 +39,7 @@
 					</tr>
 					<tr ng-if="editing[$index]">
 						<td>
+							<button ng-click="cancelJob($index)" class="btn btn-warning">Cancel</button>
 							<button ng-click="saveJob($index)" class="btn btn-success">Save</button>
 						</td>
 					</tr>
