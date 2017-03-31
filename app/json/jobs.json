@@ -6,6 +6,20 @@
 			"frequency": "daily",
 			"last_run": "2017-03-30 18:41:13",
 			"next_due": "2017-03-31 18:41:13"
+		},
+		{
+			"id": "2",
+			"dyno_size": "2X",
+			"frequency": "hourly",
+			"last_run": "2017-03-30 18:41:13",
+			"next_due": "2017-03-30 19:41:13"
+		},
+		{
+			"id": "3",
+			"dyno_size": "PX",
+			"frequency": "every_ten",
+			"last_run": "2017-03-30 18:41:13",
+			"next_due": "2017-03-30 18:51:13"
 		}
 	]
 }

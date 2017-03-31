@@ -10,12 +10,22 @@
 						<th>NEXT DUE</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr ng-repeat="job in jobs">
-						
+				<tbody ng-repeat="job in jobs">
+					<tr>
+						<td>{{job.dyno_size}}</td>
+						<td>{{job.frequency}}</td>
+						<td>{{job.last_run}}</td>
+						<td>{{job.next_due}}</td>
+					</tr>
+					<tr>
+						<td>
+							<button ng-click="" class="btn btn-primary">Edit</button>
+							<button ng-click="" class="btn btn-danger">Remove</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>
+			<button ng-click="" class="btn btn-block btn-success">Add new job</button>
 		</div>
 	</div>
 </div>

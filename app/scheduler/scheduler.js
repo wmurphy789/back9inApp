@@ -11,10 +11,13 @@ angular.module('myApp.scheduler', ['ngRoute'])
 }])
  
 .controller('SchedulerController', ['$scope','AppUtil',function($scope, AppUtil) {
+	$scope.jobs = [];
+
 	function getJobs() {
 		AppUtil.getJobs(
 			function (response) {
 				console.log(response);
+				$scope.jobs = response.data;
 			},
 			function(error) {
 				console.log(error);
