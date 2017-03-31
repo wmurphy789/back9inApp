@@ -10,7 +10,7 @@ angular.module('myApp.scheduler', ['ngRoute'])
     });
 }])
  
-.controller('SchedulerController', ['$scope','AppUtil',function($scope, AppUtil) {
+.controller('SchedulerController', ['$scope','AppUtil','$filter',function($scope, AppUtil, $filter) {
 	$scope.jobs = [];
 	$scope.editing = [];
 	$scope.dyno_sizes = ["1X", "2X", "PX"];
@@ -90,19 +90,3 @@ angular.module('myApp.scheduler', ['ngRoute'])
 
 	init();
 }]);
-
-BackNineApp.filter('removeUnderscore', function () {
-  return function (input) {
-      return input.replace(/_/g, ' ');
-  };
-});
-
-BackNineApp.filter("formatDate", function () {
-    return function (x) {
-    	if(x != null) {
-    		return new Date(x).toISOString();
-    	} else {
-    		return "";
-    	}
-    };
-});
