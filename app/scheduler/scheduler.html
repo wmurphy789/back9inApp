@@ -12,20 +12,39 @@
 				</thead>
 				<tbody ng-repeat="job in jobs">
 					<tr>
-						<td>{{job.dyno_size}}</td>
-						<td>{{job.frequency}}</td>
-						<td>{{job.last_run}}</td>
-						<td>{{job.next_due}}</td>
+						<td ng-if="!editing[$index]">{{job.dyno_size}}</td>
+						<td ng-if="editing[$index]">
+							<select ng-model="job.dyno_size" ng-options="d for d in dyno_sizes">
+							</select>
+						</td>
+						<td ng-if="!editing[$index]" class="capitalize">{{job.frequency | removeUnderscore}}</td>
+						<td ng-if="editing[$index]">
+							<select ng-model="job.frequency">
+								<option value="daily">Daily</option>
+								<option value="hourly">Hourly</option>
+								<option value="every_ten_minutes">Every Ten Minutes</option>
+							</select>
+						</td>
+						<td>{{job.last_run | formatDate | date:"MM/dd/yy h:mm:ss a"}}</td>
+						<td ng-if="!editing[$index]">{{job.next_due | formatDate | date:"MM/dd/yy h:mm a"}}</td>
+						<td ng-if="editing[$index]">
+							<input datetime-picker ng-model="job.next_due" date-format="MM/dd/yy h:mm a" />
+						</td>
 					</tr>
-					<tr>
+					<tr ng-if="!editing[$index]">
 						<td>
-							<button ng-click="" class="btn btn-primary">Edit</button>
-							<button ng-click="" class="btn btn-danger">Remove</button>
+							<button ng-click="editJob($index)" class="btn btn-primary">Edit</button>
+							<button ng-click="removeJob($index)" class="btn btn-danger">Remove</button>
+						</td>
+					</tr>
+					<tr ng-if="editing[$index]">
+						<td>
+							<button ng-click="saveJob($index)" class="btn btn-success">Save</button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<button ng-click="" class="btn btn-block btn-success">Add new job</button>
+			<button ng-click="addJob()" class="btn btn-block btn-success">Add new job</button>
 		</div>
 	</div>
 </div>
